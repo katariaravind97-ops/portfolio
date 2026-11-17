@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta name="description" content="The personal portfolio of Katari Aravind, a first-year B.Tech student from Ananthapur district, Andhra Pradesh.">
+  <title>Katari Aravind | Student Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #172923;
+      --muted: #64736d;
+      --green: #245c49;
+      --green-dark: #194533;
+      --lime: #d7ed9b;
+      --paper: #f7f8f4;
+      --line: #e4e9e1;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5.5rem;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, .navbar-brand {
+      font-family: "Manrope", sans-serif;
+      letter-spacing: -0.035em;
+    }
+
+    .navbar {
+      background: rgba(247, 248, 244, 0.94);
+      backdrop-filter: blur(14px);
+    }
+
+    .navbar-brand {
+      color: var(--ink);
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      display: inline-grid;
+      width: 2rem;
+      height: 2rem;
+      margin-right: .55rem;
+      place-items: center;
+      border-radius: .65rem;
+      background: var(--green);
+      color: white;
+      font-size: .82rem;
+      letter-spacing: 0;
+    }
+
+    .nav-link {
+      color: #53635c;
+      font-size: .93rem;
+      font-weight: 600;
+    }
+
+    .nav-link:hover, .nav-link:focus {
+      color: var(--green);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 5.5rem 0 6rem;
+      background:
+        radial-gradient(ellipse at 50% 4%, rgba(215, 237, 155, .48), transparent 25rem),
+        radial-gradient(ellipse at 92% 70%, rgba(36, 92, 73, .06), transparent 23rem),
+        var(--paper);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .5rem .85rem;
+      border: 1px solid rgba(36, 92, 73, .1);
+      border-radius: 99px;
+      background: rgba(255,255,255,.72);
+      color: var(--green);
+      font-size: .77rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 50%;
+      background: #87ae58;
+      box-shadow: 0 0 0 .25rem rgba(135, 174, 88, .14);
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      margin: 1rem auto 1.1rem;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.04;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .hero-copy {
+      max-width: 570px;
+      margin-right: auto;
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .btn-forest {
+      border: 1px solid var(--green);
+      background: var(--green);
+      color: white;
+      font-weight: 700;
+    }
+
+    .btn-forest:hover, .btn-forest:focus {
+      border-color: var(--green-dark);
+      background: var(--green-dark);
+      color: white;
+    }
+
+    .btn-outline-forest {
+      border: 1px solid #cbd6ce;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .btn-outline-forest:hover, .btn-outline-forest:focus {
+      border-color: var(--green);
+      background: #edf2e8;
+      color: var(--green-dark);
+    }
+
+    .portrait-wrap {
+      position: relative;
+      width: 290px;
+      height: 290px;
+      margin: 0 auto;
+      padding: 9px;
+      border: 1px solid rgba(255,255,255,.95);
+      border-radius: 50%;
+      background: linear-gradient(140deg, #e6f4bd 4%, #a9c789 38%, #245c49 100%);
+      box-shadow: 0 24px 60px rgba(31, 57, 44, .2), 0 0 0 10px rgba(255,255,255,.72);
+    }
+
+    .portrait-wrap::before {
+      position: absolute;
+      z-index: 0;
+      inset: -20px;
+      border: 1px solid rgba(36, 92, 73, .22);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .portrait-mask {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .portrait {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 13%;
+      transform: scale(1.45);
+      transform-origin: 39% 65%;
+    }
+
+    .portrait-label {
+      position: absolute;
+      z-index: 2;
+      right: 7px;
+      bottom: 20px;
+      display: grid;
+      width: 52px;
+      height: 52px;
+      place-items: center;
+      border: 4px solid white;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #34765c, #194533);
+      box-shadow: 0 6px 18px rgba(31, 57, 44, .2);
+      color: white;
+    }
+
+    .portrait-label i {
+      font-size: 1.15rem;
+    }
+
+    .section-pad {
+      padding: 6rem 0;
+    }
+
+    .section-kicker {
+      color: var(--green);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: .55rem 0 1rem;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .section-lead {
+      max-width: 660px;
+      color: var(--muted);
+    }
+
+    .about-panel {
+      padding: clamp(1.5rem, 4vw, 3rem);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: #fff;
+    }
+
+    .detail-row {
+      display: flex;
+      gap: .9rem;
+      align-items: flex-start;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail-row:last-child {
+      border-bottom: 0;
+    }
+
+    .detail-icon {
+      display: grid;
+      flex: 0 0 2.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      place-items: center;
+      border-radius: .8rem;
+      background: #edf3e9;
+      color: var(--green);
+      font-size: 1.05rem;
+    }
+
+    .detail-label {
+      display: block;
+      margin-bottom: .15rem;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .education-section {
+      background: #eef2ea;
+    }
+
+    .education-card, .focus-card, .project-card {
+      height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      background: #fff;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .education-card:hover, .focus-card:hover, .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(31, 57, 44, .08);
+    }
+
+    .education-card {
+      padding: 1.65rem;
+    }
+
+    .edu-number {
+      color: #9baa9e;
+      font-family: "Manrope", sans-serif;
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
+
+    .edu-icon {
+      display: grid;
+      width: 3rem;
+      height: 3rem;
+      margin: 1.25rem 0 1rem;
+      place-items: center;
+      border-radius: 1rem;
+      background: #edf3e9;
+      color: var(--green);
+      font-size: 1.35rem;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: .28rem .7rem;
+      border-radius: 99px;
+      background: #edf3e9;
+      color: var(--green);
+      font-size: .76rem;
+      font-weight: 700;
+    }
+
+    .focus-card {
+      padding: 1.5rem;
+    }
+
+    .focus-card i {
+      color: var(--green);
+      font-size: 1.4rem;
+    }
+
+    .project-card {
+      overflow: hidden;
+    }
+
+    .project-visual {
+      display: grid;
+      min-height: 210px;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(215, 237, 155, .45), transparent 48%),
+        #eaf0e7;
+      color: var(--green);
+      font-size: 4rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .contact-section {
+      background: var(--green-dark);
+      color: white;
+    }
+
+    .contact-section .section-kicker {
+      color: var(--lime);
+    }
+
+    .contact-section .section-lead {
+      color: rgba(255,255,255,.75);
+    }
+
+    .contact-location {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: .75rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: .9rem;
+      background: rgba(255,255,255,.08);
+    }
+
+    .contact-location i {
+      color: var(--lime);
+    }
+
+    footer {
+      background: #14392b;
+      color: rgba(255,255,255,.68);
+    }
+
+    .back-to-top {
+      color: var(--lime);
+      text-decoration: none;
+    }
+
+    .back-to-top:hover {
+      color: white;
+    }
+
+    @media (max-width: 991.98px) {
+      .hero {
+        padding: 5rem 0 4.5rem;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .hero {
+        padding-top: 5rem;
+      }
+
+      .row.g-5 {
+        --bs-gutter-x: 1.5rem;
+      }
+
+      .portrait-wrap {
+        width: 260px;
+        height: 260px;
+      }
+
+      .section-pad {
+        padding: 4.5rem 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top border-bottom" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#home">
+        <span class="brand-mark" aria-hidden="true">KA</span>
+        Katari Aravind
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavigation">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3 py-3 py-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#focus">Focus</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Project</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="text-center">
+          <div class="portrait-wrap mb-5">
+            <div class="portrait-mask">
+              <img class="portrait" src="image.png" alt="Portrait of Katari Aravind">
+            </div>
+            <span class="portrait-label" aria-label="Student"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span>
+          </div>
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> B.Tech student · First year</div>
+          <h1>Hello, I'm<br><span>Katari Aravind.</span></h1>
+          <p class="hero-copy">A curious student at the beginning of my technology journey. I’m building my foundation, learning by doing, and looking forward to what comes next.</p>
+          <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+            <a class="btn btn-forest btn-lg rounded-pill px-4" href="#about">Get to know me <i class="bi bi-arrow-down-short ms-1" aria-hidden="true"></i></a>
+            <a class="btn btn-outline-forest btn-lg rounded-pill px-4" href="#education">My education</a>
+          </div>
+          <div class="d-flex justify-content-center align-items-center gap-2 mt-4 text-secondary small">
+            <i class="bi bi-geo-alt-fill text-success" aria-hidden="true"></i>
+            <span>Ananthapur district, Andhra Pradesh</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="about">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5">
+            <div class="section-kicker">A little about me</div>
+            <h2 class="section-title">Starting with curiosity. Growing with every step.</h2>
+            <p class="section-lead">I’m Katari Aravind, a first-year B.Tech student from M.M. Halli village. I’ve completed my 10th grade and Intermediate, and I’m now taking the next step in my education.</p>
+            <p class="section-lead mb-0">This portfolio is a small introduction to who I am today—and a place to share the things I learn and create along the way.</p>
+          </div>
+          <div class="col-lg-7">
+            <div class="about-panel">
+              <h3 class="h5 fw-bold mb-3">Personal details</h3>
+              <div class="detail-row">
+                <span class="detail-icon"><i class="bi bi-person" aria-hidden="true"></i></span>
+                <div><span class="detail-label">Name</span><strong>Katari Aravind</strong></div>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon"><i class="bi bi-book" aria-hidden="true"></i></span>
+                <div><span class="detail-label">Current study</span><strong>B.Tech · First year</strong></div>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+                <div><span class="detail-label">Address</span><strong>M.M. Halli village, Kuderu mandal,<br class="d-none d-sm-block"> Ananthapur district</strong></div>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon"><i class="bi bi-lightbulb" aria-hidden="true"></i></span>
+                <div><span class="detail-label">My approach</span><strong>Stay curious, keep learning, and build step by step</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad education-section" id="education">
+      <div class="container">
+        <div class="text-center mx-auto mb-5">
+          <div class="section-kicker">My journey so far</div>
+          <h2 class="section-title">Education</h2>
+          <p class="section-lead mx-auto mb-0">Each stage has helped me prepare for the next. I’m currently working toward my B.Tech degree.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="education-card">
+              <span class="edu-number">01 / SCHOOL</span>
+              <div class="edu-icon"><i class="bi bi-journal-check" aria-hidden="true"></i></div>
+              <h3 class="h5 fw-bold">10th grade</h3>
+              <p class="text-secondary mb-3">Completed</p>
+              <span class="status-pill">Completed</span>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="education-card">
+              <span class="edu-number">02 / INTERMEDIATE</span>
+              <div class="edu-icon"><i class="bi bi-journal-bookmark" aria-hidden="true"></i></div>
+              <h3 class="h5 fw-bold">Intermediate</h3>
+              <p class="text-secondary mb-3">Completed</p>
+              <span class="status-pill">Completed</span>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="education-card">
+              <span class="edu-number">03 / UNDERGRADUATE</span>
+              <div class="edu-icon"><i class="bi bi-mortarboard" aria-hidden="true"></i></div>
+              <h3 class="h5 fw-bold">B.Tech</h3>
+              <p class="text-secondary mb-3">First year · Currently studying</p>
+              <span class="status-pill">In progress</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="focus">
+      <div class="container">
+        <div class="row align-items-end mb-4 g-3">
+          <div class="col-lg-7">
+            <div class="section-kicker">What I'm working on</div>
+            <h2 class="section-title mb-0">My learning focus</h2>
+          </div>
+          <div class="col-lg-5">
+            <p class="section-lead mb-0">I’m building practical foundations and exploring how ideas turn into useful things. This is a learning journey, and I’m just getting started.</p>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="focus-card d-flex gap-3">
+              <i class="bi bi-code-slash" aria-hidden="true"></i>
+              <div><h3 class="h6 fw-bold">Web fundamentals</h3><p class="text-secondary small mb-0">Exploring HTML, CSS, and Bootstrap through hands-on practice.</p></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="focus-card d-flex gap-3">
+              <i class="bi bi-puzzle" aria-hidden="true"></i>
+              <div><h3 class="h6 fw-bold">Problem solving</h3><p class="text-secondary small mb-0">Learning to break ideas into smaller, manageable steps.</p></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="focus-card d-flex gap-3">
+              <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+              <div><h3 class="h6 fw-bold">Continuous learning</h3><p class="text-secondary small mb-0">Building new skills one concept and one project at a time.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad pt-0" id="projects">
+      <div class="container">
+        <div class="mb-4">
+          <div class="section-kicker">A work in progress</div>
+          <h2 class="section-title">Featured project</h2>
+        </div>
+        <article class="project-card">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-md-5">
+              <div class="project-visual h-100" aria-hidden="true"><i class="bi bi-window-stack"></i></div>
+            </div>
+            <div class="col-md-7">
+              <div class="project-content p-lg-5">
+                <span class="status-pill mb-3">Personal project</span>
+                <h3 class="h4 fw-bold mt-2">My personal portfolio</h3>
+                <p class="text-secondary">A responsive introduction to my background, education, and learning goals. Built with semantic HTML and Bootstrap, and designed to grow as I gain experience.</p>
+                <div class="d-flex flex-wrap gap-2" aria-label="Technologies used">
+                  <span class="badge rounded-pill text-bg-light border px-3 py-2">HTML</span>
+                  <span class="badge rounded-pill text-bg-light border px-3 py-2">Bootstrap 5</span>
+                  <span class="badge rounded-pill text-bg-light border px-3 py-2">Responsive design</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-pad contact-section" id="contact">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <div class="section-kicker">Where I'm based</div>
+            <h2 class="section-title">Rooted in my community.<br>Ready for what's next.</h2>
+            <p class="section-lead mb-lg-0">I’m from M.M. Halli village in Kuderu mandal, Ananthapur district. I’m looking forward to learning, meeting new people, and finding opportunities to grow.</p>
+          </div>
+          <div class="col-lg-4">
+            <div class="contact-location">
+              <i class="bi bi-geo-alt-fill fs-5" aria-hidden="true"></i>
+              <div><strong>My location</strong><br><span class="text-white-50">M.M. Halli, Kuderu mandal<br>Ananthapur district, Andhra Pradesh</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4">
+    <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+      <span class="small">&copy; <span id="currentYear">2026</span> Katari Aravind. Made with care.</span>
+      <a class="back-to-top small" href="#home">Back to top <i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
