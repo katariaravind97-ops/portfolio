@@ -80,9 +80,39 @@
       overflow: hidden;
       padding: 5.5rem 0 6rem;
       background:
-        radial-gradient(ellipse at 50% 4%, rgba(215, 237, 155, .48), transparent 25rem),
-        radial-gradient(ellipse at 92% 70%, rgba(36, 92, 73, .06), transparent 23rem),
-        var(--paper);
+        radial-gradient(ellipse at 50% 0%, rgba(117, 153, 99, .28), transparent 28rem),
+        linear-gradient(145deg, #173f32 0%, #102e25 65%, #10291f 100%);
+      color: #fff;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      border: 1px solid rgba(232, 247, 211, .09);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::before {
+      top: 6rem;
+      left: -14rem;
+      width: 31rem;
+      height: 31rem;
+      box-shadow: 0 0 0 2.5rem rgba(232, 247, 211, .025), 0 0 0 5rem rgba(232, 247, 211, .02);
+    }
+
+    .hero::after {
+      right: -17rem;
+      bottom: 1rem;
+      width: 37rem;
+      height: 37rem;
+      box-shadow: 0 0 0 3rem rgba(232, 247, 211, .025);
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
@@ -90,21 +120,22 @@
       align-items: center;
       gap: .55rem;
       padding: .5rem .85rem;
-      border: 1px solid rgba(36, 92, 73, .1);
+      border: 1px solid rgba(215, 237, 155, .2);
       border-radius: 99px;
-      background: rgba(255,255,255,.72);
-      color: var(--green);
+      background: rgba(255,255,255,.07);
+      color: #e3f2c5;
       font-size: .77rem;
       font-weight: 700;
       letter-spacing: .13em;
       text-transform: uppercase;
+      backdrop-filter: blur(8px);
     }
 
     .eyebrow-dot {
       width: .5rem;
       height: .5rem;
       border-radius: 50%;
-      background: #87ae58;
+      background: var(--lime);
       box-shadow: 0 0 0 .25rem rgba(135, 174, 88, .14);
     }
 
@@ -116,16 +147,54 @@
       line-height: 1.04;
     }
 
+    .hero h1 {
+      color: #f7f8f4;
+    }
+
     .hero h1 span {
-      color: var(--green);
+      color: var(--lime);
     }
 
     .hero-copy {
       max-width: 570px;
       margin-right: auto;
       margin-left: auto;
-      color: var(--muted);
+      color: rgba(255,255,255,.72);
       font-size: 1.1rem;
+    }
+
+    .hero .btn-forest {
+      border-color: var(--lime);
+      background: var(--lime);
+      color: #173f32;
+    }
+
+    .hero .btn-forest:hover,
+    .hero .btn-forest:focus {
+      border-color: #e6f4bd;
+      background: #e6f4bd;
+      color: #102e25;
+      transform: translateY(-2px);
+    }
+
+    .hero .btn-outline-forest {
+      border-color: rgba(255,255,255,.35);
+      color: white;
+    }
+
+    .hero .btn-outline-forest:hover,
+    .hero .btn-outline-forest:focus {
+      border-color: rgba(255,255,255,.6);
+      background: rgba(255,255,255,.09);
+      color: white;
+    }
+
+    .hero-location {
+      color: rgba(255,255,255,.68) !important;
+    }
+
+    .hero-location i {
+      color: var(--lime) !important;
     }
 
     .btn-forest {
@@ -133,12 +202,15 @@
       background: var(--green);
       color: white;
       font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
     }
 
     .btn-forest:hover, .btn-forest:focus {
       border-color: var(--green-dark);
       background: var(--green-dark);
       color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(25, 69, 51, .16);
     }
 
     .btn-outline-forest {
@@ -155,21 +227,22 @@
 
     .portrait-wrap {
       position: relative;
-      width: 290px;
-      height: 290px;
+      width: 310px;
+      height: 310px;
       margin: 0 auto;
-      padding: 9px;
-      border: 1px solid rgba(255,255,255,.95);
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,.55);
       border-radius: 50%;
-      background: linear-gradient(140deg, #e6f4bd 4%, #a9c789 38%, #245c49 100%);
-      box-shadow: 0 24px 60px rgba(31, 57, 44, .2), 0 0 0 10px rgba(255,255,255,.72);
+      background: linear-gradient(140deg, #f0f7d8 4%, #b4d18e 38%, #76a878 68%, #d7ed9b 100%);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, .34), 0 0 0 9px rgba(255,255,255,.08), 0 0 0 18px rgba(215,237,155,.055);
+      animation: portrait-float 6s ease-in-out infinite;
     }
 
     .portrait-wrap::before {
       position: absolute;
       z-index: 0;
       inset: -20px;
-      border: 1px solid rgba(36, 92, 73, .22);
+      border: 1px solid rgba(215, 237, 155, .28);
       border-radius: 50%;
       content: "";
       pointer-events: none;
@@ -209,7 +282,7 @@
       border: 4px solid white;
       border-radius: 50%;
       background: linear-gradient(145deg, #34765c, #194533);
-      box-shadow: 0 6px 18px rgba(31, 57, 44, .2);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
       color: white;
     }
 
@@ -217,8 +290,22 @@
       font-size: 1.15rem;
     }
 
+    @keyframes portrait-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
     .section-pad {
       padding: 6rem 0;
+    }
+
+    #focus {
+      padding-bottom: 4rem;
+    }
+
+    #projects {
+      padding-top: 4rem !important;
+      background: linear-gradient(180deg, var(--paper), #edf2e9);
     }
 
     .section-kicker {
@@ -246,6 +333,7 @@
       border: 1px solid var(--line);
       border-radius: 1.25rem;
       background: #fff;
+      box-shadow: 0 20px 55px rgba(31, 57, 44, .06);
     }
 
     .detail-row {
@@ -291,16 +379,30 @@
       border: 1px solid var(--line);
       border-radius: 1.1rem;
       background: #fff;
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
 
     .education-card:hover, .focus-card:hover, .project-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 18px 40px rgba(31, 57, 44, .08);
+      border-color: #c9d8bd;
     }
 
     .education-card {
+      position: relative;
+      overflow: hidden;
       padding: 1.65rem;
+    }
+
+    .education-card::before {
+      position: absolute;
+      top: 0;
+      right: 1.5rem;
+      left: 1.5rem;
+      height: 3px;
+      border-radius: 0 0 99px 99px;
+      background: linear-gradient(90deg, #b8d58d, var(--green));
+      content: "";
     }
 
     .edu-number {
@@ -317,8 +419,9 @@
       height: 3rem;
       margin: 1.25rem 0 1rem;
       place-items: center;
+      border: 1px solid #dfebd5;
       border-radius: 1rem;
-      background: #edf3e9;
+      background: linear-gradient(145deg, #f3f7ed, #e5efdc);
       color: var(--green);
       font-size: 1.35rem;
     }
@@ -335,11 +438,20 @@
 
     .focus-card {
       padding: 1.5rem;
+      background: linear-gradient(145deg, #fff, #fbfcf9);
     }
 
     .focus-card i {
+      display: grid;
+      flex: 0 0 2.8rem;
+      width: 2.8rem;
+      height: 2.8rem;
+      place-items: center;
+      border: 1px solid #dfebd5;
+      border-radius: .9rem;
+      background: #edf3e9;
       color: var(--green);
-      font-size: 1.4rem;
+      font-size: 1.25rem;
     }
 
     .project-card {
@@ -348,13 +460,161 @@
 
     .project-visual {
       display: grid;
-      min-height: 210px;
+      min-height: 275px;
       place-items: center;
       background:
-        radial-gradient(circle at 50% 50%, rgba(215, 237, 155, .45), transparent 48%),
-        #eaf0e7;
+        radial-gradient(circle at 12% 15%, rgba(215, 237, 155, .34), transparent 40%),
+        linear-gradient(145deg, #e5eddf, #dce8d8);
+      padding: 2rem;
+    }
+
+    .mini-browser {
+      width: min(100%, 340px);
+      overflow: hidden;
+      border: 1px solid rgba(23, 41, 35, .1);
+      border-radius: 1rem;
+      background: #fff;
+      box-shadow: 0 20px 42px rgba(31, 57, 44, .16);
+      transform: rotate(-2deg);
+      transition: transform .3s ease;
+    }
+
+    .project-card:hover .mini-browser {
+      transform: rotate(0) translateY(-3px);
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      height: 2rem;
+      padding: 0 .8rem;
+      border-bottom: 1px solid #edf0eb;
+      background: #fafbf9;
+    }
+
+    .browser-dot {
+      width: .42rem;
+      height: .42rem;
+      border-radius: 50%;
+      background: #cfdbca;
+    }
+
+    .browser-dot:first-child {
+      background: #d78c79;
+    }
+
+    .browser-dot:nth-child(2) {
+      background: #e4c56f;
+    }
+
+    .browser-dot:nth-child(3) {
+      background: #8eb68a;
+    }
+
+    .mini-page {
+      padding: 1.1rem;
+    }
+
+    .mini-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .mini-brand {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--ink);
+      font-size: .62rem;
+      font-weight: 800;
+    }
+
+    .mini-brand-mark {
+      display: grid;
+      width: 1.15rem;
+      height: 1.15rem;
+      place-items: center;
+      border-radius: .35rem;
+      background: var(--green);
+      color: white;
+      font-size: .48rem;
+    }
+
+    .mini-nav-lines {
+      display: flex;
+      gap: .3rem;
+    }
+
+    .mini-nav-lines span {
+      width: 1.2rem;
+      height: .18rem;
+      border-radius: 9px;
+      background: #dce5d8;
+    }
+
+    .mini-hero {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .8rem;
+      border-radius: .7rem;
+      background: linear-gradient(130deg, #edf3e9, #f7f8f4);
+    }
+
+    .mini-avatar {
+      flex: 0 0 3.2rem;
+      width: 3.2rem;
+      height: 3.2rem;
+      border: 3px solid white;
+      border-radius: 50%;
+      background-image: url("image.png");
+      background-position: 50% 13%;
+      background-size: 185%;
+      box-shadow: 0 4px 12px rgba(31, 57, 44, .16);
+    }
+
+    .mini-caption {
+      color: #718078;
+      font-size: .48rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .mini-title {
+      margin-top: .15rem;
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-size: .9rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .mini-title span {
       color: var(--green);
-      font-size: 4rem;
+    }
+
+    .mini-lines {
+      display: grid;
+      gap: .3rem;
+      margin-top: .75rem;
+    }
+
+    .mini-lines span {
+      height: .22rem;
+      border-radius: 9px;
+      background: #e8ede5;
+    }
+
+    .mini-lines span:first-child {
+      width: 90%;
+    }
+
+    .mini-lines span:last-child {
+      width: 65%;
     }
 
     .project-content {
@@ -418,12 +678,20 @@
       }
 
       .portrait-wrap {
-        width: 260px;
-        height: 260px;
+        width: 245px;
+        height: 245px;
       }
 
       .section-pad {
         padding: 4.5rem 0;
+      }
+
+      .hero {
+        padding-bottom: 4rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.8rem, 12vw, 4rem);
       }
     }
 
@@ -434,6 +702,10 @@
 
       *, *::before, *::after {
         transition-duration: .01ms !important;
+      }
+
+      .portrait-wrap {
+        animation: none;
       }
     }
   </style>
@@ -477,7 +749,7 @@
             <a class="btn btn-forest btn-lg rounded-pill px-4" href="#about">Get to know me <i class="bi bi-arrow-down-short ms-1" aria-hidden="true"></i></a>
             <a class="btn btn-outline-forest btn-lg rounded-pill px-4" href="#education">My education</a>
           </div>
-          <div class="d-flex justify-content-center align-items-center gap-2 mt-4 text-secondary small">
+          <div class="hero-location d-flex justify-content-center align-items-center gap-2 mt-4 small">
             <i class="bi bi-geo-alt-fill text-success" aria-hidden="true"></i>
             <span>Ananthapur district, Andhra Pradesh</span>
           </div>
@@ -601,7 +873,29 @@
         <article class="project-card">
           <div class="row g-0 align-items-stretch">
             <div class="col-md-5">
-              <div class="project-visual h-100" aria-hidden="true"><i class="bi bi-window-stack"></i></div>
+              <div class="project-visual h-100" aria-hidden="true">
+                <div class="mini-browser">
+                  <div class="browser-bar">
+                    <span class="browser-dot"></span>
+                    <span class="browser-dot"></span>
+                    <span class="browser-dot"></span>
+                  </div>
+                  <div class="mini-page">
+                    <div class="mini-nav">
+                      <div class="mini-brand"><span class="mini-brand-mark">KA</span> Katari Aravind</div>
+                      <div class="mini-nav-lines"><span></span><span></span><span></span></div>
+                    </div>
+                    <div class="mini-hero">
+                      <span class="mini-avatar"></span>
+                      <div>
+                        <div class="mini-caption">B.Tech student</div>
+                        <div class="mini-title">Hello, I'm<br><span>Katari Aravind.</span></div>
+                      </div>
+                    </div>
+                    <div class="mini-lines"><span></span><span></span></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="col-md-7">
               <div class="project-content p-lg-5">
